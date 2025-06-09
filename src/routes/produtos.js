@@ -10,13 +10,15 @@ router.get(
     produtosController.getProdutos
 )
 router.post(
-    '/produtos', 
+    '/produtos',
+    authMiddleware.validateToken, 
     produtosMiddleware.validateCreateProduto, 
     produtosController.createProduto
 )
 
 router.delete(
-    '/produtos/:id', 
+    '/produtos/:id',
+    authMiddleware.validateToken,
     produtosMiddleware.validateDeleteProduto, 
     produtosController.deleteProduto
 )
